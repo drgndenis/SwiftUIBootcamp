@@ -27,7 +27,7 @@ struct ExtractedFunctionsBootcamp: View {
             Text(textName)
                 .font(.largeTitle)
             
-            PressButton()
+            PressButton(backgroundColor: $backgroundColor, textName: $textName)
         }
     }
 }
@@ -38,8 +38,8 @@ struct ExtractedFunctionsBootcamp: View {
 
 struct PressButton: View {
     
-    @State private var backgroundColor: Color = .pink
-    @State private var textName: String = "NO BODY"
+    @Binding var backgroundColor: Color
+    @Binding var textName: String
     
     var body: some View {
         Button(
@@ -56,12 +56,7 @@ struct PressButton: View {
     }
     
     func buttonPressed() {
-        if backgroundColor == .pink {
-            textName = "This color is YELLOW"
-            backgroundColor = .yellow
-        } else {
-            textName = "This color is PINK"
-            backgroundColor = .pink
-        }
+        textName = (backgroundColor == .pink) ? "This color is YELLOW" : "This color is PINK"
+        backgroundColor = (backgroundColor == .pink) ? .yellow : .pink
     }
 }
