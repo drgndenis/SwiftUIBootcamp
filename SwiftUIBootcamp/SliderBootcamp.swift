@@ -56,3 +56,9 @@ struct SliderBootcamp: View {
 #Preview {
     SliderBootcamp()
 }
+
+struct Previews_SliderBootcamp_LibraryContent: LibraryContentProvider {
+    var views: [LibraryItem] {
+        LibraryItem(/*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/)
+    }
+}
