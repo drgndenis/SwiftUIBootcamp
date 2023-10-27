@@ -12,20 +12,27 @@ struct AnimationBootcamp: View {
     
     var body: some View {
         VStack {
-            
-            Button("Button") {
-                    isAnimated.toggle()
-            }
             Spacer()
+            //            Button("Button") {
+            //                isAnimated.toggle()
+            //            }
+            //            .controlSize(.large)
+            //            .buttonStyle(.borderedProminent)
             RoundedRectangle(cornerRadius: isAnimated ? 50 : 25)
                 .fill(isAnimated ? .indigo : .teal)
                 .frame(
                     width: isAnimated ? 100 : 300,
                     height: isAnimated ? 100 : 300
                 )
+                .overlay(content: {
+                    isAnimated ? Text("Circle") : Text("Rectangle")
+                })
                 .rotationEffect(Angle(degrees: isAnimated ? 360 : 0))
                 .offset(y: isAnimated ? 300 : 0)
                 .animation(.default, value: isAnimated)
+                .onTapGesture {
+                    isAnimated.toggle()
+                }
             Spacer()
         }
     }
